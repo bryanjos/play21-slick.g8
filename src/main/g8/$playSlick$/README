@@ -1,0 +1,1 @@
+A g8 template for Play 2.1 Scala using Slick with a PostgreSQL DB. Also has a User defined as well as some routes defined for loggin in, registering, etc. May not be the prettiest set up, but its a good starting ground for me.

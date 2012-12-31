@@ -1,6 +1,10 @@
 @(user: User, message:String)(implicit request: RequestHeader)
 
-@main("Login") {
+@javascript = {
+<script src="@routes.Assets.at("javascripts/user.js")" type="text/javascript"></script>
+}
+
+@main("Register", javascript) {
 <div class="row">
     <div class="span12" id="alerts">
         @if(message != ""){
@@ -12,32 +16,46 @@
     </div>
 </div>
 
-<form id="loginForm" action="/register" method="post" enctype="multipart/form-data" class="form-horizontal" onsubmit="return checkPassword()">
+<form id="registerForm" action="/register" method="post" enctype="multipart/form-data" class="form-horizontal" onsubmit="return checkPassword()">
     <div class="control-group">
-        <label class="control-label" for="title">Username</label>
+        <label class="control-label" for="username">Username</label>
         <div class="controls">
             <input type="text" class="input-xlarge" id="username" name="username" maxlength="30" value="@user.username">
         </div>
     </div>
 
     <div class="control-group">
-        <label class="control-label" for="title">Password</label>
+        <label class="control-label" for="password">Password</label>
         <div class="controls">
             <input type="password" class="input-xlarge" id="password" name="password" maxlength="15">
         </div>
     </div>
 
     <div class="control-group">
-        <label class="control-label" for="title">Confirm Password</label>
+        <label class="control-label" for="confirmPassword">Confirm Password</label>
         <div class="controls">
             <input type="password" class="input-xlarge" id="confirmPassword" name="confirmPassword" maxlength="15" value="">
         </div>
     </div>
 
     <div class="control-group">
-        <label class="control-label" for="title">Email</label>
+        <label class="control-label" for="email">Email</label>
         <div class="controls">
             <input type="text" class="input-xlarge" id="email" name="email" maxlength="300" value="@user.email">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="firstName">First Name</label>
+        <div class="controls">
+            <input type="text" class="input-xlarge" id="firstName" name="firstName" maxlength="300" value="@user.firstName">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="lastName">Last Name</label>
+        <div class="controls">
+            <input type="text" class="input-xlarge" id="lastName" name="lastName" maxlength="300" value="@user.lastName">
         </div>
     </div>
 
@@ -47,17 +65,4 @@
         </div>
     </div>
 </form>
-<script>
-    function checkPassword(){
-    var password = $("#password").val();
-    var confirmPassword = $("#confirmPassword").val();
-
-    if(password == confirmPassword)
-    return true;
-
-    $("#alerts").append('<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a>' + 'Password does not match' + '</div>');
-    return false;
-    }
-
-</script>
 }

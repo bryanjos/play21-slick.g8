@@ -54,6 +54,7 @@ object InitialData {
 
       if (!tableMap.contains("user")) {
         UserDAO.ddl.create
+        UserDAO.save(User("admin","admin","admin@$app_name$.com","Admin","Admin",isAdmin = true))
       }
 
     }

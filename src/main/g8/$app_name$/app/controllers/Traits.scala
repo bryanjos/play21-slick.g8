@@ -12,7 +12,7 @@ trait Authentication extends Controller {
 
   def Authenticated[A](p: BodyParser[A])(f: AuthenticatedRequest[A] => Result) = {
     Action(p) { request =>
-      Application.getCurrentUser(request).map { user =>
+      ApplicationController.getCurrentUser(request).map { user =>
         f(AuthenticatedRequest(user, request))
       }.getOrElse(Unauthorized)
     }

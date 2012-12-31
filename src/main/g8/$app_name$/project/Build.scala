@@ -10,6 +10,7 @@ object ApplicationBuild extends Build {
   val appDependencies = Seq(
     // Add your project dependencies here,
     jdbc,
+    "com.typesafe" %% "play-plugins-mailer" % "2.1-SNAPSHOT",
     "com.typesafe" % "slick_2.10.0-RC1" % "0.11.2",
     "postgresql" % "postgresql" % "9.1-901-1.jdbc4"
   )
@@ -17,7 +18,8 @@ object ApplicationBuild extends Build {
 
   val main = play.Project(appName, appVersion, appDependencies).settings(
     // Add your own project settings here   
-    resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"   
+    resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots",
+    resolvers += "Daniel's Repository" at "http://danieldietrich.net/repository/snapshots/"   
   )
 
 }
